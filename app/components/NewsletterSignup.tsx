@@ -1,27 +1,47 @@
-'use client'
-
 import React, { useState } from 'react'
-import { Button } from "./ui/button"
-import { Input } from "./ui/input"
-import { Card, CardContent } from "./ui/card"
+import { Button } from "@/app/components/ui/button"
+import { Input } from "@/app/components/ui/input"
+import { Card, CardContent } from "@/app/components/ui/card"
+import supabase from '@/lib/supabaseClient'
+
+const isValidEmail = (email: string): boolean => {
+  const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return re.test(email);
+};
 
 export default function NewsletterSignup() {
   const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleNewsletterSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Here you would typically send the email to your newsletter service
-    console.log(`Signed up with email: ${email}`);
-    // TODO: Implement actual newsletter signup logic
-    // For example:
-    // try {
-    //   await signupToNewsletter(email);
-    //   // Handle successful signup
-    // } catch (error) {
-    //   // Handle error
-    // }
-    // Reset the email input
-    setEmail('');
+    setMessage('');
+
+    if (!isValidEmail(email)) {
+      setMessage('Please enter a valid email address.');
+      return;
+    }
+
+    try {
+      const { data, error } = await supabase
+        .from('newsletter_subscribers')
+        .insert({ email: email })
+
+      if (error) {
+        if (error.code === '23505') { // Unique violation error code
+          setMessage('This email is already subscribed.');
+        } else {
+          throw error;
+        }
+      } else {
+        console.log('Subscribed:', data);
+        setMessage('Thank you for subscribing!');
+        setEmail('');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setMessage('Oops! Something went wrong. Please try again.');
+    }
   };
 
   return (
@@ -41,6 +61,7 @@ export default function NewsletterSignup() {
           <Button type="submit" className="w-full bg-green-500 hover:bg-green-600 text-white">
             Help me reach my goal!
           </Button>
+          {message && <p className="text-center mt-2">{message}</p>}
         </form>
       </CardContent>
     </Card>

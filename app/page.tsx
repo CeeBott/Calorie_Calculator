@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import CalorieCalculator from './components/CalorieCalculator'
+import CalorieCalculator from '@/app/components/CalorieCalculator'
 
 export default function Home() {
   const [isMetric, setIsMetric] = useState(true);
