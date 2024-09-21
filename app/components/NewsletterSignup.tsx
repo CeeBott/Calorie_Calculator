@@ -35,7 +35,7 @@ export default function NewsletterSignup() {
         }
       } else {
         console.log('Subscribed:', data);
-        setMessage('Thank you for subscribing!');
+        setMessage('Help is on the way, watch your inbox!');
         setEmail('');
       }
     } catch (error) {
