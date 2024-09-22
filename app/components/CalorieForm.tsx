@@ -23,7 +23,7 @@ interface CalorieFormProps {
 
 interface FormData {
   age: number | '';
-  gender: 'male' | 'female';
+  gender: 'male' | 'female' | ''; // Allow empty string for unselected
   height: { ft: string; in: string; cm: string };
   weight: { kg: string; lbs: string };
   activity: string;
@@ -32,14 +32,14 @@ interface FormData {
 export default function CalorieForm({ isMetric, setIsMetric, setResults }: CalorieFormProps) {
   const [formData, setFormData] = useState<FormData>({
     age: '',
-    gender: "male",
+    gender: '', // Initialize gender to an empty string
     height: { ft: "", in: "", cm: "" },
     weight: { kg: "", lbs: "" },
     activity: "1.2"
   })
 
   const calculateCalories = () => {
-    if (formData.age === '') return;  // Don't calculate if age is empty
+    if (formData.age === '' || formData.gender === '') return;  // Don't calculate if age or gender is empty
 
     const weightKg = isMetric ? parseFloat(formData.weight.kg) : parseFloat(formData.weight.lbs) * 0.453592
     const heightCm = isMetric ? parseFloat(formData.height.cm) : (parseFloat(formData.height.ft) * 30.48) + (parseFloat(formData.height.in) * 2.54)

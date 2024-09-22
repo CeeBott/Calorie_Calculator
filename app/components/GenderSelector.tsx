@@ -11,7 +11,7 @@ interface GenderSelectorProps {
 
 export default function GenderSelector({ gender, setGender }: GenderSelectorProps) {
   return (
-    <div className="flex-shrink-0">
+    <div className="flex-grow">
       <Label className="text-sm font-medium text-green-800">Gender</Label>
       <RadioGroup 
         value={gender} 
