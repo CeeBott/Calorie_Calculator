@@ -25,6 +25,8 @@ export default function HeightInput({ isMetric, height, setHeight }: HeightInput
     }
   };
 
+  const inputClassName = "mt-1 block w-full h-10 px-3 py-2 rounded-md border-green-300 text-green-800 shadow-sm focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500";
+
   if (isMetric) {
     return (
       <div>
@@ -37,7 +39,7 @@ export default function HeightInput({ isMetric, height, setHeight }: HeightInput
           onChange={handleChange}
           min="0"
           step="0.1"
-          className="mt-1 block w-full rounded-md border-green-300 shadow-sm focus:border-green-500 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+          className={inputClassName}
           placeholder="Enter height in cm"
           aria-label="Height in centimeters"
         />
@@ -55,7 +57,7 @@ export default function HeightInput({ isMetric, height, setHeight }: HeightInput
             value={height.ft}
             onChange={handleChange}
             min="0"
-            className="mt-1 block w-full rounded-md border-green-300 shadow-sm focus:border-green-500 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+            className={inputClassName}
             placeholder="Feet"
             aria-label="Height in feet"
           />
@@ -70,7 +72,7 @@ export default function HeightInput({ isMetric, height, setHeight }: HeightInput
             onChange={handleChange}
             min="0"
             max="11"
-            className="mt-1 block w-full rounded-md border-green-300 shadow-sm focus:border-green-500 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+            className={inputClassName}
             placeholder="Inches"
             aria-label="Height in inches"
           />

@@ -69,8 +69,8 @@ export default function CalorieForm({ isMetric, setIsMetric, setResults }: Calor
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <form onSubmit={handleSubmit} className="space-y-4 w-full">
+      <div className="flex flex-row justify-between items-start">
         <GenderSelector 
           gender={formData.gender} 
           setGender={(gender) => setFormData(prev => ({ ...prev, gender }))} 
@@ -102,7 +102,10 @@ export default function CalorieForm({ isMetric, setIsMetric, setResults }: Calor
         />
       </div>
       
-      <Button type="submit" className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-md transition duration-150 ease-in-out">
+      <Button 
+        type="submit" 
+        className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-md transition duration-150 ease-in-out"
+      >
         Calculate
       </Button>
     </form>

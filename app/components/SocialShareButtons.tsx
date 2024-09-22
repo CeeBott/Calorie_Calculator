@@ -32,12 +32,12 @@ export default function SocialShareButtons() {
   };
 
   return (
-    <div className="flex flex-col items-center space-y-4 mt-8">
-      <p className="text-green-700 font-semibold">Share on Social Media:</p>
-      <div className="flex space-x-6">
+    <div className="flex flex-col items-center space-y-4 mt-8 w-full">
+      <p className="text-sm sm:text-base text-green-700 font-semibold break-words">Share on Social Media</p>
+      <div className="flex flex-wrap justify-center gap-4">
         <Button 
           variant="ghost" 
-          className="text-white hover:text-green-700 social-icon-button p-3"
+          className="text-white hover:text-green-700 social-icon-button p-3 hover:bg-transparent"
           onClick={() => shareOnSocialMedia('facebook')}
           aria-label="Share on Facebook"
         >
@@ -47,7 +47,7 @@ export default function SocialShareButtons() {
         </Button>
         <Button 
           variant="ghost" 
-          className="text-white hover:text-green-700 social-icon-button p-3"
+          className="text-white hover:text-green-700 social-icon-button p-3 hover:bg-transparent"
           onClick={() => shareOnSocialMedia('x')}
           aria-label="Share on X"
         >
@@ -57,7 +57,7 @@ export default function SocialShareButtons() {
         </Button>
         <Button 
           variant="ghost" 
-          className="text-white hover:text-green-700 social-icon-button p-3"
+          className="text-white hover:text-green-700 social-icon-button p-3 hover:bg-transparent"
           onClick={() => shareOnSocialMedia('linkedin')}
           aria-label="Share on LinkedIn"
         >
@@ -67,7 +67,7 @@ export default function SocialShareButtons() {
         </Button>
         <Button 
           variant="ghost" 
-          className="text-white hover:text-green-700 social-icon-button p-3"
+          className="text-white hover:text-green-700 social-icon-button p-3 hover:bg-transparent"
           onClick={() => shareOnSocialMedia('pinterest')}
           aria-label="Share on Pinterest"
         >

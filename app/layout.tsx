@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Calorie Calculator',
   description: 'Calculate your daily calorie needs with our easy-to-use tool.',
+  viewport: 'width=device-width, initial-scale=1',
 }
 
 export default function RootLayout({

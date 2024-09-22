@@ -35,7 +35,7 @@ export default function WeightInput({ isMetric, weight, setWeight }: WeightInput
         onChange={handleChange}
         min="0"
         step="0.1"
-        className="mt-1 block w-full rounded-md border-green-300 shadow-sm focus:border-green-500 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+        className="mt-1 block w-full h-10 px-3 py-2 rounded-md border-green-300 text-green-800 shadow-sm focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500"
         placeholder={placeholder}
         aria-label={`Enter weight in ${unit}`}
       />

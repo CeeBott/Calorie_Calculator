@@ -11,18 +11,17 @@ interface UnitSwitchProps {
 
 export default function UnitSwitch({ isMetric, setIsMetric }: UnitSwitchProps) {
   return (
-    <div className="flex flex-col items-end">
-      <Label htmlFor="unit-switch" className="text-sm font-medium text-green-800 mb-2">Units</Label>
-      <div className="flex items-center">
-        <span className={`text-sm mr-2 ${isMetric ? 'text-green-500 font-medium' : 'text-green-700'}`}>Metric</span>
-        <Switch
-          id="unit-switch"
-          checked={isMetric}
-          onCheckedChange={setIsMetric}
-          className="data-[state=checked]:bg-green-500 data-[state=unchecked]:bg-green-500"
-        />
-        <span className={`text-sm ml-2 ${!isMetric ? 'text-green-500 font-medium' : 'text-green-700'}`}>Imperial</span>
-      </div>
+    <div className="flex items-center space-x-2">
+      <Label htmlFor="unit" className="text-sm font-medium text-green-800 whitespace-nowrap">Units:</Label>
+      <Switch
+        id="unit"
+        checked={isMetric}
+        onCheckedChange={setIsMetric}
+        className="data-[state=checked]:bg-green-500"
+      />
+      <Label htmlFor="unit" className="text-sm text-green-800 w-14 text-left">
+        {isMetric ? 'Imperial' : 'Metric'}
+      </Label>
     </div>
   )
 }

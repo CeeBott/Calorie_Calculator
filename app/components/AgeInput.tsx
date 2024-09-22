@@ -26,7 +26,7 @@ export default function AgeInput({ age, setAge }: AgeInputProps) {
         value={age}
         onChange={handleChange}
         min="0"
-        className="mt-1 block w-full rounded-md border-green-300 shadow-sm focus:border-green-500 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+        className="mt-1 block w-full h-10 px-3 py-2 rounded-md border-green-300 text-green-800 shadow-sm focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500"
         placeholder="Enter your age"
         aria-label="Enter your age"
       />
