@@ -22,13 +22,13 @@ export default function CalorieCalculator({ isMetric, setIsMetric }: CalorieCalc
   const [results, setResults] = useState<CalorieResults | null>(null)
 
   return (
-    <div className="container mx-auto max-w-2xl">
+    <div className="w-full max-w-4xl mx-auto px-4 py-8">
       <Card className="mb-8 shadow-lg bg-gradient-to-br from-green-50 to-green-100 rounded-lg">
-        <CardHeader className="space-y-1 p-4">
-          <CardTitle className="text-4xl font-bold text-green-900">Calorie Calculator</CardTitle>
-          <CardDescription className="text-lg text-green-700">Input your details to find your optimal calorie intake</CardDescription>
+        <CardHeader className="space-y-1 p-6">
+          <CardTitle className="text-3xl sm:text-4xl font-bold text-green-900">Calorie Calculator</CardTitle>
+          <CardDescription className="text-base sm:text-lg text-green-700">Input your details to find your optimal calorie intake</CardDescription>
         </CardHeader>
-        <CardContent className="p-4 space-y-4">   
+        <CardContent className="p-6">   
           <CalorieForm isMetric={isMetric} setIsMetric={setIsMetric} setResults={setResults} />
         </CardContent>
       </Card>

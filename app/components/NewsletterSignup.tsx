@@ -46,21 +46,23 @@ export default function NewsletterSignup() {
 
   return (
     <Card className="shadow-lg bg-gradient-to-br from-green-50 to-green-100 mb-8">
-      <CardContent className="pt-6">
+      <CardContent className="p-6">
         <form onSubmit={handleNewsletterSignup} className="space-y-4">
-          <Input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-            className="border-green-300 focus:ring-green-500"
-            required
-            aria-label="Email for newsletter signup"
-          />
-          <Button type="submit" className="w-full bg-green-500 hover:bg-green-600 text-white">
-            Help me reach my goal!
-          </Button>
+          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+            <Input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              className="flex-grow border-green-300 focus:ring-green-500"
+              required
+              aria-label="Email for newsletter signup"
+            />
+            <Button type="submit" className="w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white">
+              Help me reach my goal!
+            </Button>
+          </div>
           {message && <p className="text-center mt-2">{message}</p>}
         </form>
       </CardContent>
