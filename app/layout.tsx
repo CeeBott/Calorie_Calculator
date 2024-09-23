@@ -5,6 +5,27 @@ export const metadata: Metadata = {
   title: 'Calorie Calculator',
   description: 'Calculate your daily calorie needs with our easy-to-use tool.',
   viewport: 'width=device-width, initial-scale=1',
+  icons: {
+    icon: '/CalorieCompassFavicon.svg',
+  },
+  openGraph: {
+    title: 'Calorie Calculator',
+    description: 'Calculate your daily calorie needs with our easy-to-use tool.',
+    images: [
+      {
+        url: '/CalorieCompassThumbnail.png',
+        width: 1200,
+        height: 630,
+        alt: 'Calorie Compass Thumbnail',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Calorie Calculator',
+    description: 'Calculate your daily calorie needs with our easy-to-use tool.',
+    images: ['/CalorieCompassThumbnail.png'],
+  },
 }
 
 export default function RootLayout({

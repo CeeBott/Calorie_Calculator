@@ -25,7 +25,7 @@ export default function CalorieCalculator({ isMetric, setIsMetric }: CalorieCalc
     <div className="w-full">
       <Card className="mb-8 shadow-lg bg-gradient-to-br from-green-50 to-green-100 rounded-lg overflow-hidden">
         <CardHeader className="space-y-1 p-4 sm:p-6">
-          <CardTitle className="text-2xl sm:text-3xl font-bold text-green-900 break-words">CalorieCompass</CardTitle>
+          <CardTitle className="text-2xl sm:text-3xl font-bold text-green-900 break-words">Calorie Calculator</CardTitle>
           <CardDescription className="text-sm sm:text-base text-green-700">Input your details to find your optimal calorie intake</CardDescription>
         </CardHeader>
         <CardContent className="p-4 sm:p-6">   
