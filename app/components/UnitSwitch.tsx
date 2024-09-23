@@ -20,7 +20,7 @@ export default function UnitSwitch({ isMetric, setIsMetric }: UnitSwitchProps) {
         className="data-[state=checked]:bg-green-500"
       />
       <Label htmlFor="unit" className="text-sm text-green-800 w-14 text-left">
-        {isMetric ? 'Imperial' : 'Metric'}
+        {isMetric ? 'Metirc' : 'Imperial'}
       </Label>
     </div>
   )
