@@ -13,10 +13,10 @@ export const metadata: Metadata = {
     description: 'Calculate your daily calorie needs with our easy-to-use tool.',
     images: [
       {
-        url: '/CalorieCompassThumbnail.png',
+        url: '/Calorie-Calculator-Web-Preview.png',
         width: 1200,
         height: 630,
-        alt: 'Calorie Compass Thumbnail',
+        alt: 'Calorie Compass Calorie Calculator Web Preview',
       },
     ],
   },
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Calorie Calculator',
     description: 'Calculate your daily calorie needs with our easy-to-use tool.',
-    images: ['/CalorieCompassThumbnail.png'],
+    images: ['/Calorie-Calculator-Web-Preview.png'],
   },
 }
 
