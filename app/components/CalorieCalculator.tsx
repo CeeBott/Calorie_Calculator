@@ -11,6 +11,7 @@ interface CalorieResults {
   mildLoss: number;
   weightLoss: number;
   extremeLoss: number;
+  gainWeight: number; // Added gainWeight to the results
 }
 
 interface CalorieCalculatorProps {

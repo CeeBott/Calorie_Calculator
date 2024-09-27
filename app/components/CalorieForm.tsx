@@ -13,6 +13,7 @@ interface CalorieResults {
   mildLoss: number;
   weightLoss: number;
   extremeLoss: number;
+  gainWeight: number; // Added gainWeight to the results
 }
 
 interface CalorieFormProps {
@@ -32,41 +33,65 @@ interface FormData {
 export default function CalorieForm({ isMetric, setIsMetric, setResults }: CalorieFormProps) {
   const [formData, setFormData] = useState<FormData>({
     age: '',
-    gender: '', // Initialize gender to an empty string
+    gender: '',
     height: { ft: "", in: "", cm: "" },
     weight: { kg: "", lbs: "" },
-    activity: "1.2"
-  })
+    activity: "" // Set to an empty string for unselected state
+  });
+
+  const [errors, setErrors] = useState<{ [key: string]: string }>({}); // State for error messages
+
+  const validateFields = () => {
+    const newErrors: { [key: string]: string } = {};
+    if (formData.age === '') newErrors.age = 'Age is required.';
+    if (formData.gender === '') newErrors.gender = 'Gender is required.';
+    if (isMetric && (formData.height.cm === '' || formData.weight.kg === '')) {
+      if (formData.height.cm === '') newErrors.height = 'Height is required.';
+      if (formData.weight.kg === '') newErrors.weight = 'Weight is required.';
+    } else if (!isMetric && (formData.height.ft === '' || formData.height.in === '' || formData.weight.lbs === '')) {
+      if (formData.height.ft === '' || formData.height.in === '') newErrors.height = 'Height is required.';
+      if (formData.weight.lbs === '') newErrors.weight = 'Weight is required.';
+    }
+    if (formData.activity === '') newErrors.activity = 'Activity level is required.';
+    return newErrors;
+  };
 
   const calculateCalories = () => {
-    if (formData.age === '' || formData.gender === '') return;  // Don't calculate if age or gender is empty
+    const validationErrors = validateFields();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return; // Stop calculation if there are validation errors
+    }
+    setErrors({}); // Clear errors if validation passes
 
-    const weightKg = isMetric ? parseFloat(formData.weight.kg) : parseFloat(formData.weight.lbs) * 0.453592
-    const heightCm = isMetric ? parseFloat(formData.height.cm) : (parseFloat(formData.height.ft) * 30.48) + (parseFloat(formData.height.in) * 2.54)
-    const age = formData.age
+    // Convert values to numbers
+    const weightKg = isMetric ? parseFloat(formData.weight.kg) : parseFloat(formData.weight.lbs) * 0.453592;
+    const heightCm = isMetric ? parseFloat(formData.height.cm) : (parseFloat(formData.height.ft) * 30.48) + (parseFloat(formData.height.in) * 2.54);
+    const age = parseFloat(formData.age as string); // Ensure age is a number
 
-    let bmr: number
+    let bmr: number;
     if (formData.gender === "male") {
-      bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age) + 5
+      bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age) + 5;
     } else {
-      bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age) - 161
+      bmr = (10 * weightKg) + (6.25 * heightCm) - (5 * age) - 161;
     }
 
-    const tdee = bmr * parseFloat(formData.activity)
+    const tdee = bmr * parseFloat(formData.activity);
 
     setResults({
       bmr: Math.round(bmr),
       maintain: Math.round(tdee),
       mildLoss: Math.round(tdee - 250),
       weightLoss: Math.round(tdee - 500),
-      extremeLoss: Math.round(tdee - 1000)
-    })
-  }
+      extremeLoss: Math.round(tdee - 1000),
+      gainWeight: Math.round(tdee + 250) // Added gain weight calculation
+    });
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    calculateCalories()
-  }
+    e.preventDefault();
+    calculateCalories();
+  };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 w-full">
@@ -101,7 +126,16 @@ export default function CalorieForm({ isMetric, setIsMetric, setResults }: Calor
           setActivity={(activity) => setFormData(prev => ({ ...prev, activity }))} 
         />
       </div>
-      
+
+      {/* Display all error messages at the bottom of the form */}
+      {Object.keys(errors).length > 0 && (
+        <div className="text-red-500 mb-2">
+          {Object.values(errors).map((error, index) => (
+            <p key={index}>{error}</p>
+          ))}
+        </div>
+      )}
+
       <Button 
         type="submit" 
         className="w-full bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-md transition duration-150 ease-in-out"

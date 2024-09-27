@@ -8,6 +8,7 @@ interface ResultsCardProps {
     mildLoss: number;
     weightLoss: number;
     extremeLoss: number;
+    gainWeight: number; // Added gainWeight to the results
   };
 }
 
@@ -32,21 +33,40 @@ const ResultsCard: React.FC<ResultsCardProps> = ({ results }) => {
             BMR is the number of calories your body burns at rest to maintain basic life functions.
           </p>
         </div>
-        <div className="flex flex-row justify-between items-center">
-          <p className="text-base sm:text-lg text-green-800 pr-2 max-w-[60%] sm:max-w-none">Maintain weight:</p>
-          <p className="text-base sm:text-lg font-bold text-green-800 text-right whitespace-nowrap">{results.maintain} Calories/day</p>
+        <div className="flex flex-row justify-between items-start">
+          <div className="flex flex-col">
+            <p className="text-base sm:text-lg text-green-800 pr-2 max-w-[60%] sm:max-w-none">Maintain Weight:</p>
+            <p className="text-xs sm:text-sm text-green-600 mt-1 italic">Stay at your current weight</p>
+          </div>
+          <p className="text-base sm:text-lg font-bold text-green-800 text-right whitespace-nowrap self-start">{results.maintain} Calories/day</p>
         </div>
-        <div className="flex flex-row justify-between items-center">
-          <p className="text-base sm:text-lg text-green-800 pr-2 max-w-[60%] sm:max-w-none">Mild weight loss:</p>
-          <p className="text-base sm:text-lg font-bold text-green-800 text-right whitespace-nowrap">{results.mildLoss} Calories/day</p>
+        <div className="flex flex-row justify-between items-start">
+          <div className="flex flex-col">
+            <p className="text-base sm:text-lg text-green-800 pr-2 max-w-[60%] sm:max-w-none">Mild Weight Gain:</p>
+            <p className="text-xs sm:text-sm text-green-600 mt-1 italic">Gain .5 lb (0.23 kg) per week</p>
+          </div>
+          <p className="text-base sm:text-lg font-bold text-green-800 text-right whitespace-nowrap self-start">{results.gainWeight} Calories/day</p>
         </div>
-        <div className="flex flex-row justify-between items-center">
-          <p className="text-base sm:text-lg text-green-800 pr-2 max-w-[60%] sm:max-w-none">Weight loss:</p>
-          <p className="text-base sm:text-lg font-bold text-green-800 text-right whitespace-nowrap">{results.weightLoss} Calories/day</p>
+        <div className="flex flex-row justify-between items-start">
+          <div className="flex flex-col">
+            <p className="text-base sm:text-lg text-green-800 pr-2 max-w-[60%] sm:max-w-none">Mild Weight Loss:</p>
+            <p className="text-xs sm:text-sm text-green-600 mt-1 italic">Lose .5 lb (0.23 kg) per week</p>
+          </div>
+          <p className="text-base sm:text-lg font-bold text-green-800 text-right whitespace-nowrap self-start">{results.mildLoss} Calories/day</p>
         </div>
-        <div className="flex flex-row justify-between items-center">
-          <p className="text-base sm:text-lg text-green-800 pr-2 max-w-[60%] sm:max-w-none">Extreme weight loss:</p>
-          <p className="text-base sm:text-lg font-bold text-green-800 text-right whitespace-nowrap">{results.extremeLoss} Calories/day</p>
+        <div className="flex flex-row justify-between items-start">
+          <div className="flex flex-col">
+            <p className="text-base sm:text-lg text-green-800 pr-2 max-w-[60%] sm:max-w-none">Moderate Weight Loss:</p>
+            <p className="text-xs sm:text-sm text-green-600 mt-1 italic">Lose 1 lb (0.45 kg) per week</p>
+          </div>
+          <p className="text-base sm:text-lg font-bold text-green-800 text-right whitespace-nowrap self-start">{results.weightLoss} Calories/day</p>
+        </div>
+        <div className="flex flex-row justify-between items-start">
+          <div className="flex flex-col">
+            <p className="text-base sm:text-lg text-green-800 pr-2 max-w-[60%] sm:max-w-none">Aggressive Weight Loss:</p>
+            <p className="text-xs sm:text-sm text-green-600 mt-1 italic">Lose 2 lbs (0.91 kg) per week</p>
+          </div>
+          <p className="text-base sm:text-lg font-bold text-green-800 text-right whitespace-nowrap self-start">{results.extremeLoss} Calories/day</p>
         </div>
       </CardContent>
     </Card>
