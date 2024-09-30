@@ -49,19 +49,21 @@ export default function NewsletterSignup() {
       <CardContent className="p-4 sm:p-6">
         <form onSubmit={handleNewsletterSignup} className="space-y-4">
           <div className="flex flex-col space-y-4">
-            <Input
-              id="email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              className="w-full border-green-300 focus:ring-green-500"
-              required
-              aria-label="Email for newsletter signup"
-            />
-            <Button type="submit" className="w-full bg-green-500 hover:bg-green-600 text-white">
-              Help me reach my goal!
-            </Button>
+            <div className="flex flex-col sm:flex-row sm:space-x-2">
+              <Input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                className="flex-1 border-green-300 focus:ring-green-500 w-full sm:w-1/2" // Full width on mobile, 50% on larger screens
+                required
+                aria-label="Email for newsletter signup"
+              />
+              <Button type="submit" className="w-full sm:w-1/3 bg-green-500 hover:bg-green-600 text-white mt-2 sm:mt-0"> {/* Full width on mobile, 33% on larger screens */}
+                Reach my goal!
+              </Button>
+            </div>
           </div>
           {message && <p className="text-center mt-2">{message}</p>}
         </form>

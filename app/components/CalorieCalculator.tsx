@@ -34,14 +34,15 @@ export default function CalorieCalculator({ isMetric, setIsMetric }: CalorieCalc
         </CardContent>
       </Card>
 
-      {results && (
-        <>
-          <ResultsCard results={results} />
-          <NewsletterSignup />
-        </>
-      )}
+      {results && <NewsletterSignup />}
 
-      <SocialShareButtons />
-    </div>
-  )
+{results && (
+  <>
+    <ResultsCard results={results} />
+  </>
+)}
+
+<SocialShareButtons />
+</div>
+)
 }
