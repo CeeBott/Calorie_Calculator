@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: 'Discover your optimal daily calorie intake with Calorie Compass. Our precise calculator considers your age, gender, height, weight, and activity level for personalized results. Start your health journey today!',
   viewport: 'width=device-width, initial-scale=1',
   icons: {
-    icon: '/CalorieCompassFavicon.svg',
+    icon: '/Calorie-Compass-Calculator-Favicon.png',
   },
   keywords: 'calorie calculator, daily calorie intake, personalized nutrition, weight management',
   authors: [{ name: 'Calorie Compass' }],
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description: 'Discover your optimal daily calorie intake with Calorie Compass. Our precise calculator considers your age, gender, height, weight, and activity level for personalized results. Start your health journey today!',
     images: [
       {
-        url: '/Calorie-Calculator-Web-Preview.png',
+        url: '/Calorie-Compass-Calculator-WebPreview.png',
         width: 1200,
         height: 630,
         alt: 'Calorie Compass Calorie Calculator',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     creator: '@TheCalorieComp',
     title: 'Calorie Compass: Personalized Calorie Calculator',
     description: 'Discover your optimal daily calorie intake with Calorie Compass. Our precise calculator considers your age, gender, height, weight, and activity level for personalized results. Start your health journey today!',
-    images: ['/Calorie-Calculator-Web-Preview.png'],
+    images: ['/Calorie-Compass-Calculator-WebPreview.png'],
   },
 }
 
